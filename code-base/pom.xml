@@ -124,9 +124,9 @@
             </dependency>
 
             <dependency>
-            <groupId>org.opentest4j</groupId>
-            <artifactId>opentest4j</artifactId>
-            <version>1.0.0</version>
+                <groupId>org.opentest4j</groupId>
+                <artifactId>opentest4j</artifactId>
+                <version>1.0.0</version>
             </dependency>
 
         </dependencies>
@@ -208,14 +208,9 @@
             <artifactId>junit-vintage-engine</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
-
     </dependencies>
 
 
@@ -232,6 +227,20 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+
+
+            <!-- tomcat7插件 -->
+            <!-- 注意：目前来说，maven中央仓库还没有tomcat8的插件 -->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
