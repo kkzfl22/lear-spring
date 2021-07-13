@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Beans>
+    <!--数据库操作-->
+    <Bean id="accountDao" class="org.liujun.learn.spring.dao.Impl.SqlLiteJdbcOperatorImpl">
+        <property name="jdbcConnection" ref="jdbcConnection"/>
+    </Bean>
+    <!--业务操作-->
+    <Bean id="accountService" class="org.liujun.learn.spring.service.TransferMoneyService">
+        <property name="accountDao" ref="accountDao"></property>
+    </Bean>
+
+    <!--数据库连接管理-->
+    <Bean id="jdbcConnection" class="org.liujun.learn.spring.utils.JdbcConnection"></Bean>
+
+    <!--事务管理-->
+    <Bean id="transferManager" class="org.liujun.learn.spring.utils.TransferManager">
+        <property name="jdbcConnection" ref="jdbcConnection"/>
+    </Bean>
+
+    <!--代理工厂管理-->
+    <Bean id="proxyFactory" class="org.liujun.learn.spring.factory.ProxyFactory" >
+        <property name="transferManager" ref="transferManager"/>
+    </Bean>
+</Beans>
